@@ -23,9 +23,8 @@ whisper_model = whisper.load_model("base")
 # Summarization model
 summarizer = pipeline("summarization")
 
-@app.route('/subscribe/<username>', methods=['GET', 'POST'])
-def subscribe(username):
-    account_name = username
+@app.route('/subscribe/<account_name>', methods=['GET', 'POST'])
+def subscribe(account_name):
 
     username = os.environ.get('APP_USERNAME')
     password = os.environ.get('APP_PASSWORD')
