@@ -31,7 +31,7 @@ def subscribe(username):
     password = os.environ.get('APP_PASSWORD')
     print('all,user/pass',username,password)
     if not all([account_name, username, password]):
-        return jsonify({'error': 'Missing required fields'}), 400
+        return jsonify({'error': 'Missing required fields','account_name':account_name, 'username':username, 'password':password}), 400
 
     try:
         # Login to Instagram
