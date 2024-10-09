@@ -6,3 +6,4 @@ flask
 instagrapi
 scenedetect
 numpy
+opencv-python
