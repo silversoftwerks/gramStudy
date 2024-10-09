@@ -25,7 +25,6 @@ summarizer = pipeline("summarization")
 
 @app.route('/subscribe/<account_name>', methods=['GET', 'POST'])
 def subscribe(account_name):
-
     username = os.environ.get('APP_USERNAME')
     password = os.environ.get('APP_PASSWORD')
     print('all,user/pass',username,password)
