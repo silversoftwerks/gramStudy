@@ -24,20 +24,12 @@ whisper_model = whisper.load_model("base")
 summarizer = pipeline("summarization")
 
 @app.route('/subscribe/<username>', methods=['GET', 'POST'])
-# def subscribe_to_user(username):
-#     # Here you would implement the logic to subscribe to the user
-#     # This could involve updating a database, making API calls, etc.
-    
-#     # For this example, we'll just return a success message
-#     request = {"account_name":username, username:username}
-#     subscribe(request)
-    
-# # @app.route('/subscribe', methods=['POST'])
 def subscribe(username):
     account_name = username
 
     username = os.environ.get('APP_USERNAME')
     password = os.environ.get('APP_PASSWORD')
+    print('all,user/pass',username,password)
     if not all([account_name, username, password]):
         return jsonify({'error': 'Missing required fields'}), 400
 
@@ -67,6 +59,7 @@ def subscribe(username):
         return jsonify({'status': f'Subscribed to {account_name}'})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
 def transcribe_and_summarize(account_name, video_name):
     video_path = os.path.join(DATA_DIR, account_name, 'videos', video_name)
     audio_path = os.path.join(DATA_DIR, account_name, 'videos', f"{video_name}.wav")
