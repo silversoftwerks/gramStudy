@@ -24,18 +24,17 @@ whisper_model = whisper.load_model("base")
 summarizer = pipeline("summarization")
 
 @app.route('/subscribe/<username>', methods=['GET', 'POST'])
-def subscribe_to_user(username):
-    # Here you would implement the logic to subscribe to the user
-    # This could involve updating a database, making API calls, etc.
+# def subscribe_to_user(username):
+#     # Here you would implement the logic to subscribe to the user
+#     # This could involve updating a database, making API calls, etc.
     
-    # For this example, we'll just return a success message
-    request = {"account_name":username, username:username}
-    subscribe(request)
+#     # For this example, we'll just return a success message
+#     request = {"account_name":username, username:username}
+#     subscribe(request)
     
-# @app.route('/subscribe', methods=['POST'])
-def subscribe(request):
-    data = request
-    account_name = data.get('account_name')
+# # @app.route('/subscribe', methods=['POST'])
+def subscribe(username):
+    account_name = username
 
     username = os.environ.get('APP_USERNAME')
     password = os.environ.get('APP_PASSWORD')
@@ -134,5 +133,5 @@ def generate_visual_summary(account_name, video_name):
 # ... (keep the existing routes for listing and serving files)
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=5000)
+    app.run(debug=True,host='0.0.0.0', port=5001)
 
