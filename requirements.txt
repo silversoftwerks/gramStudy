@@ -5,5 +5,4 @@ openai-whisper
 flask
 instagrapi
 scenedetect
-cv2
 numpy
